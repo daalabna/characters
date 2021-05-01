@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import deadIcon from '../../icons/dead.svg';
 import aliveIcon from '../../icons/alive.svg';
 import unknownIcon from '../../icons/unknown.svg';
-import { Status } from '../../store';
+import { Status } from '../../store/characters/characters';
 
 interface IStatusProps {
   status: Status

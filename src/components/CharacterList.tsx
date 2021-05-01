@@ -1,20 +1,41 @@
 import React from 'react';
-import { ICharacter } from '../store';
+import { observer } from 'mobx-react';
+import styled from 'styled-components';
+import { ICharacter } from '../store/characters/characters';
 import Character from './Character/Character';
 
+const CharacterWrapper = styled.div`
+  margin-top: 10px
+`;
+
 interface ICharactersProps {
-   characters: ICharacter[]
+    characters: ICharacter[]
+    favorites: number[]
+    // eslint-disable-next-line no-unused-vars
+    addFavorite: (id: number) => void
+    // eslint-disable-next-line no-unused-vars
+    deleteFavorite: (id: number) => void
 }
 
-export default function CharacterList(props: ICharactersProps) {
-  const { characters } = props;
+function CharacterList(props: ICharactersProps) {
+  const {
+    characters, favorites, addFavorite, deleteFavorite,
+  } = props;
   return (
-    <div>
+    <CharacterWrapper>
       {
         characters.map((character) => (
-          <Character key={character.id} character={character} />
+          <Character
+            key={character.id}
+            character={character}
+            isFavorite={favorites.includes(character.id)}
+            addFavorite={addFavorite}
+            deleteFavorite={deleteFavorite}
+          />
         ))
       }
-    </div>
+    </CharacterWrapper>
   );
 }
+
+export default observer(CharacterList);

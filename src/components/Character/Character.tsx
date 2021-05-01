@@ -1,12 +1,19 @@
 import React from 'react';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
 import styled from 'styled-components';
-import { ICharacter } from '../../store';
+import { ICharacter } from '../../store/characters/characters';
 import Avatar from './Avatar';
 import Gender from './Gender';
 import Status from './Status';
 
 interface ICharacterProps {
     character: ICharacter
+    // eslint-disable-next-line no-unused-vars
+    addFavorite: (id: number) => void
+    // eslint-disable-next-line no-unused-vars
+    deleteFavorite: (id: number) => void
+    isFavorite: boolean
 }
 
 const CharacterWrapper = styled.div`
@@ -15,19 +22,46 @@ const CharacterWrapper = styled.div`
 
 const IconsWrapper = styled.div`
   display: flex;
+  justifyContent: center;
+  alignItems: center;
+`;
+
+const Params = styled.div`
+  margin-right: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+const Toggle = styled.div`
+  margin-top: 25px;
+`;
+
 export default function Character(props: ICharacterProps) {
-  const { character } = props;
+  const {
+    character, addFavorite, deleteFavorite, isFavorite,
+  } = props;
   return (
     <CharacterWrapper>
-      <Avatar image={character.image} name={character.name} />
+      <div>
+        <h2>Charachter</h2>
+        <Avatar image={character.image} name={character.name} />
+      </div>
       <IconsWrapper>
-        <Gender gender={character.gender} />
-        <Status status={character.status} />
+        <Params>
+          <h2>Gender</h2>
+          <Gender gender={character.gender} />
+        </Params>
+        <Params>
+          <h2>Status</h2>
+          <Status status={character.status} />
+        </Params>
       </IconsWrapper>
+      <Toggle>
+        {isFavorite
+          ? <StarIcon onClick={() => deleteFavorite(character.id)} />
+          : <StarBorderIcon onClick={() => addFavorite(character.id)} />}
+      </Toggle>
     </CharacterWrapper>
   );
 }
