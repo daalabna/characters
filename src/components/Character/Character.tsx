@@ -31,6 +31,8 @@ const Params = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const Toggle = styled.div`
@@ -49,11 +51,11 @@ export default function Character(props: ICharacterProps) {
       </div>
       <IconsWrapper>
         <Params>
-          <h2>Gender</h2>
+          <p>Gender</p>
           <Gender gender={character.gender} />
         </Params>
         <Params>
-          <h2>Status</h2>
+          <p>Status</p>
           <Status status={character.status} />
         </Params>
       </IconsWrapper>
