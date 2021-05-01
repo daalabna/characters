@@ -9,7 +9,14 @@ import storeCharacters from '../store/characters/characters';
 
 const Container = styled.div`
   margin: 50px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
 `;
+
+const PaginationStyle = {
+  marginTop: '20px',
+};
 
 const handleChange = (key: string, value: string) => {
   if (key !== 'page') {
@@ -41,9 +48,10 @@ function Characters() {
         favorites={storeCharacters.favoriteCharacters}
       />
       <Pagination
+        style={PaginationStyle}
+        shape="rounded"
         count={Number(pages)}
         page={+storeParams.queryParams.page}
-        color="primary"
         onChange={(event, page) => { handleChange('page', page.toString()); }}
       />
     </Container>

@@ -1,11 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 import Characters from './components/Characters';
+
+const WrapperCharacters = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 function App() {
   return (
-    <div className="App">
+    <WrapperCharacters>
       <Characters />
-    </div>
+    </WrapperCharacters>
   );
 }
 

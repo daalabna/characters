@@ -17,7 +17,11 @@ interface ICharacterProps {
 }
 
 const CharacterWrapper = styled.div`
+  position: relative;
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 10px;
+  padding: 10px;
 `;
 
 const IconsWrapper = styled.div`
@@ -36,7 +40,9 @@ const Params = styled.div`
 `;
 
 const Toggle = styled.div`
-  margin-top: 25px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 `;
 
 export default function Character(props: ICharacterProps) {

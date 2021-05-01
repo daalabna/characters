@@ -35,7 +35,7 @@ export default function ControlPanel(props: IControlPanel) {
           handleChange={(value: string) => updateQuery('gender', value)}
         />
       </FormControl>
-      <FormControl variant="outlined">
+      <FormControl style={SelectWrapper} variant="outlined">
         <InputLabel>Status</InputLabel>
         <Select
           value={queryParams.status}
