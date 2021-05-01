@@ -6,7 +6,7 @@ import Select from './Select';
 import { IQueryParams } from '../../store/queryParams';
 
 const SelectWrapper = {
-  marginRight: '10px',
+  marginLeft: '10px',
 };
 
 interface IControlPanel {
@@ -35,7 +35,7 @@ export default function ControlPanel(props: IControlPanel) {
           handleChange={(value: string) => updateQuery('gender', value)}
         />
       </FormControl>
-      <FormControl style={SelectWrapper} variant="outlined">
+      <FormControl variant="outlined">
         <InputLabel>Status</InputLabel>
         <Select
           value={queryParams.status}
